@@ -1,39 +1,39 @@
 describe('My First Test', () => {
-    // it('Does not do much!', () => {
-    //     expect(true).to.equal(true)
-    // });
+    it('Does not do much!', () => {
+        expect(true).to.equal(true)
+    });
 
-    // it('Visits the index', () => {
-    //     cy.visit('/')
-    // });
+    it('Visits the index', () => {
+        cy.visit('/')
+    });
 
-    // it('Go to page button', () => {
-    //     cy.visit('/');
-    //     cy.contains('Go to page').click();
-    //     cy.wait(1000);
-    //     cy.location().should((loc) => {
-    //         expect(loc.pathname).to.eq('/pilotTypes.html')
-    //     })
-    // });
+    it('Go to page button', () => {
+        cy.visit('/');
+        cy.contains('Go to page').click();
+        cy.wait(1000);
+        cy.location().should((loc) => {
+            expect(loc.pathname).to.eq('/pilotTypes.html')
+        })
+    });
 
-    // it('Cloud are loaded', () => {
-    //     cy.visit('/pilotTypes.html');
-    //     cy.contains('Church');
-    //     cy.contains('Zwart');
-    // });
+    it('Cloud are loaded', () => {
+        cy.visit('/pilotTypes.html');
+        cy.contains('Church');
+        cy.contains('Zwart');
+    });
 
-    // it('Church show cloud in level 1', () => {
-    //     cy.visit('/level1.html?type=church');
-    //     cy.wait(1000);
-    //     cy.contains('Level 1 (church)');
-    //     cy.contains('#svgContainer').should('not.exist');
-    // });
+    it('Church show cloud in level 1', () => {
+        cy.visit('/level1.html?type=church');
+        cy.wait(1000);
+        cy.contains('Level 1 (church)');
+        cy.contains('#svgContainer').should('not.exist');
+    });
 
-    // it('Church show cloud in level 2', () => {
-    //     cy.visit('/level2.html?type=church');
-    //     cy.wait(1000);
-    //     cy.get('#modelSelect').click();
-    // });
+    it('Church show cloud in level 2', () => {
+        cy.visit('/level2.html?type=church');
+        cy.wait(1000);
+        cy.get('#modelSelect').click();
+    });
 
     it('Church show cloud in level 1 and click on all', () => {
         cy.visit('/level1.html?type=church');
@@ -150,5 +150,18 @@ describe('My First Test', () => {
         cy.visit('level1.html?type=zwart');
         cy.wait(500);
         cy.get('#focrow').contains('5_5').click();
+    });
+
+    it('church show cloud in level 2', () => {
+        cy.visit('level1.html?type=church');
+        cy.wait(500);
+        cy.get('#focrow').contains('nav').click();
+        cy.get('#focrow').contains('noweight').click();
+        cy.get('#socrow').contains('5000').click();
+        cy.visit('level2.html?type=church');
+        cy.wait(500);
+        cy.get('#svgContainer');
+        cy.contains('Level 2 (church)');
+        cy.get('g.cell');
     });
 })
